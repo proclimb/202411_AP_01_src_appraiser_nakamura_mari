@@ -85,7 +85,7 @@ function subArticle()
 	if ($_REQUEST['act'] == 'article') {
 		return;
 	}
-	$sql = fnSqlArticleList(0, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
+	$sql = fnSqlArticleList(1, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
 	$res = mysqli_query($conn, $sql);
 	$row = mysqli_fetch_array($res);
 
@@ -310,7 +310,7 @@ function subArticleEditComplete()
 
 		$res = mysqli_query($conn, $sql);
 
-		/* $sql = fnSqlFManagerInsert(fnNextNo('FM'),$article,$room,$articleNote,$del);
+		/* $sql = fnSqlFManagerInsert($articleNo, $article, $room, $keyPlace, $address, $articleNote, $keyBox, $drawing, $sellCharge, $del);
 		   $res = mysqli_query($conn,$sql); */
 	}
 
