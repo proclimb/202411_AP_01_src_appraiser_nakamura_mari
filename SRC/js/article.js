@@ -20,14 +20,14 @@ function fnArticleEditCheck() {
 		form.act.value = 'articleEditComplete';
 		form.submit();
 	}
+}
 
 
 
-	function fnArticleDeleteCheck(no) {
-		if (confirm('削除します。よろしいですか？')) {
-			form.articleNo.value = no;
-			form.act.value = 'articleDelete';
-			form.submit();
-		}
+function fnArticleDeleteCheck(no) {
+	if (confirm('削除します。よろしいですか？')) {
+		form.articleNo.value = no;
+		form.act.value = 'articleDelete';
+		form.submit();
 	}
 }
