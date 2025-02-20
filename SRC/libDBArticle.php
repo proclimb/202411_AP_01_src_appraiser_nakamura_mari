@@ -15,25 +15,33 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
 	$sql .= " FROM TBLARTICLE";
 	$sql .= " WHERE DEL = $sDel";
 	if ($sArticle) {
-		$sql .= " AND ARTICLE LIKE '%$sArticle$%'";
+		$sArticle = htmlspecialchars_decode($sArticle, ENT_QUOTES);
+		$sql .= " AND ARTICLE LIKE '%$sArticle%'";
 	}
 	if ($sRoom) {
+		$sRoom = htmlspecialchars_decode($sRoom, ENT_QUOTES);
 		$sql .= " AND ROOM LIKE '%$sRoom%'";
 	}
 	if ($sKeyPlace) {
+		$sKeyPlace = htmlspecialchars_decode($sKeyPlace, ENT_QUOTES);
 		$sql .= " AND KEYPLACE LIKE '%$sKeyPlace%'";
 	}
 	if ($sArticleNote) {
+		$sArticleNote = htmlspecialchars_decode($sArticleNote, ENT_QUOTES);
 		$sql .= " AND ARTICLENOTE LIKE '%$sArticleNote%'";
 	}
 	if ($sKeyBox) {
-		$sql .= " AND KEYBOX LIKE '%l$sKeyBox%'";
+		$sKeyBox = htmlspecialchars_decode($sKeyBox, ENT_QUOTES);
+		$sql .= " AND KEYBOX LIKE '%$sKeyBox%'";
 	}
 	if ($sDrawing) {
+		$sDrawing = htmlspecialchars_decode($sDrawing, ENT_QUOTES);
 		$sql .= " AND DRAWING LIKE '%$sDrawing%'";
 	}
 	if ($sSellCharge) {
-		$sql .= " AND SELLCHARGE LIKE '%$sSellCharge%'";
+		$sSellCharge = htmlspecialchars_decode($sSellCharge, ENT_QUOTES);
+		$sql .= " AND SELLC
+		HARGE LIKE '%$sSellCharge%'";
 	}
 	if ($orderBy) {
 		$sql .= " ORDER BY $orderBy $orderTo";
@@ -111,7 +119,7 @@ function fnSqlArticleInsert($articleNo, $article, $room, $keyPlace, $address, $a
 function fnSqlArticleDelete($articleNo)
 {
 	$sql  = "UPDATE TBLARTICLE";
-	$sql .= " SET DEL = 0";
+	$sql .= " SET DEL = -1";
 	$sql .= ",UPDT = CURRENT_TIMESTAMP";
 	$sql .= " WHERE ARTICLENO = '$articleNo'";
 
