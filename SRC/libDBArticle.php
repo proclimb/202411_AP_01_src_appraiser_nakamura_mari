@@ -40,8 +40,7 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
 	}
 	if ($sSellCharge) {
 		$sSellCharge = htmlspecialchars_decode($sSellCharge, ENT_QUOTES);
-		$sql .= " AND SELLC
-		HARGE LIKE '%$sSellCharge%'";
+		$sql .= " AND SELLCHARGE LIKE '%$sSellCharge%'";
 	}
 	if ($orderBy) {
 		$sql .= " ORDER BY $orderBy $orderTo";
